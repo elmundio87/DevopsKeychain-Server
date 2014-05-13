@@ -10,8 +10,13 @@
     <td><%= user.username %></td>
     <td><%= user.pub_key %></td>
     <td>
-    
-      <% form_for user, :url => user_update_path(), :method => :update %>
+  
+ 
+  <%= form_for user, url: users_update_path(), method: :post do |f| %>
+  <%= f.hidden_field :username %><br />
+  <%= f.submit %>
+  <% end %>
+
 
     </td>
   </tr>

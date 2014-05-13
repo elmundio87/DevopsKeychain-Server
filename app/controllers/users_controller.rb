@@ -16,8 +16,9 @@ end
 
 def update
 	
-	user = User.find_by(name: params[:user])
+	user = User.find_by(username: params[:user][:username])
 	user.update(pub_key: "rofl")
+	redirect_to users_path
 
 end
 
