@@ -15,9 +15,6 @@ DevopsKeychain::Application.routes.draw do
 
      post 'users/update' => 'users#update'
 
-
-    map.resources :users
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
