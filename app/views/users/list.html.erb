@@ -2,7 +2,7 @@
   <tr>
     <th>Username</th>
     <th>Public Key</th>
-    <th>Update</th>
+    <th></th>
   </tr>
  
 <% @users.each do |user| %>
@@ -10,12 +10,11 @@
     <td><%= user.username %></td>
     <td><%= user.pub_key %></td>
     <td>
-  
  
-  <%= form_for user, url: users_update_path(), method: :post do |f| %>
-  <%= f.hidden_field :username %><br />
-  <%= f.submit %>
-  <% end %>
+    <%= form_for user, url: users_update_path(), method: :post do |f| %>
+    <%= f.hidden_field :username %><br />
+    <%= f.submit "Generate new private key", onClick: "setTimeout('location.reload(true);', 5000)" %>
+    <% end %>
 
 
     </td>
