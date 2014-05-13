@@ -1,0 +1,2 @@
+class PrivatekeysController < ApplicationController
+end
