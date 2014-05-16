@@ -7,12 +7,12 @@
  
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.username %></td>
+    <td><%= user.email %></td>
     <td><%= user.pub_key %></td>
     <td>
  
     <%= form_for user, url: users_update_path(), method: :post do |f| %>
-    <%= f.hidden_field :username %><br />
+    <%= f.hidden_field :email %><br />
     <%= f.submit "Generate new private key", onClick: "setTimeout('location.reload(true);', 5000)" %>
     <% end %>
 

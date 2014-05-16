@@ -16,7 +16,7 @@ end
 
 def update
 	
-	user = User.find_by(username: params[:user][:username])
+	user = User.find_by(email: params[:user][:email])
 	user.update(pub_key: generate_key())
 
 end
