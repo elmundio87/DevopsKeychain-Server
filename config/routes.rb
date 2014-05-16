@@ -14,6 +14,8 @@ DevopsKeychain::Application.routes.draw do
      get 'users/create' => 'users#create'
      get 'users/:id' => 'users#show'
 
+     get 'secure' => 'secure_content#get'
+
      post 'users/update' => 'users#update'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
