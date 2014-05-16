@@ -1,23 +1,25 @@
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Public Key</th>
-    <th></th>
-  </tr>
- 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.email %></td>
-    <td><%= user.pub_key %></td>
-    <td>
- 
-    <%= form_for user, url: users_update_path(), method: :post do |f| %>
-    <%= f.hidden_field :email %><br />
-    <%= f.submit "Generate new private key", onClick: "setTimeout('location.reload(true);', 5000)" %>
+<% if user_signed_in? %>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Public Key</th>
+        <th></th>
+      </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.pub_key %></td>
+        <td>
+
+        <%= form_for user, url: users_update_path(), method: :post do |f| %>
+        <%= f.hidden_field :email %><br />
+        <%= f.submit "Generate new private key", onClick: "setTimeout('location.reload(true);', 5000)" %>
+        <% end %>
+
+
+        </td>
+      </tr>
     <% end %>
-
-
-    </td>
-  </tr>
+    </table>
 <% end %>
-</table>
