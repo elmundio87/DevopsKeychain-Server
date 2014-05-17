@@ -14,7 +14,7 @@ DevopsKeychain::Application.routes.draw do
      get 'users/create' => 'users#create'
      get 'users/:id' => 'users#show'
 
-     get 'secure' => 'secure_content#get'
+     post 'secure' => 'secure_content#get'
 
      post 'users/update' => 'users#update'
 
