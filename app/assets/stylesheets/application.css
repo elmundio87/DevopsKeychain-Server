@@ -15,3 +15,8 @@
 .navbar strong {
 	color: white;
 }
+
+.navbar{
+	border-top-right-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+}

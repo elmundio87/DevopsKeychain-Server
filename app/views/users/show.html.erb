@@ -8,8 +8,20 @@
     <% @passwords.each do |password| %>
       <tr>
         <td><%= password.name %></td>
-        <td><%= password.content %></td>
+        <td>
+          <input type="password" value="<%= password.content %>">
+            
+          </input>
+        </td>
       </tr>
     <% end %>
     </table>
 <% end %>
+
+
+<%- content_for(:js) do -%>
+  <%= javascript_include_tag "hideShowPassword.min" -%>
+  <script>
+    $('input').hideShowPassword(false, true);
+  </script>
+<%- end -%>
