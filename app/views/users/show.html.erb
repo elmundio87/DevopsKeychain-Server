@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Password</th>
+      </tr>
+
+    <% @passwords.each do |password| %>
+      <tr>
+        <td><%= password.name %></td>
+        <td><%= password.content %></td>
+      </tr>
+    <% end %>
+    </table>
+<% end %>

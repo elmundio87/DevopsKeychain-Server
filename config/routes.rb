@@ -4,15 +4,16 @@ DevopsKeychain::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'users#list'
+   root 'users#show'
 
   # Example of regular route:
      get 'key' => 'privatekeys#new'
      get 'key/create' => 'privatekeys#create'
      get 'users' => 'users#list'
+     get 'admin' => 'users#list'
      get 'users/new' => 'users#new'
      get 'users/create' => 'users#create'
-     get 'users/:id' => 'users#show'
+     get 'users' => 'users#show'
 
      post 'secure' => 'secure_content#get'
 

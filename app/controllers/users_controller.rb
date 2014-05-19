@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_filter :authenticate_user!
 def new
 	render html: "OK"
 end
@@ -12,6 +12,14 @@ def create
 end
 
 def show
+
+	
+	if(user_signed_in?)
+	    @passwords = SecureContent.where("owner = ?", current_user[:id])
+
+	end
+
+
 end
 
 def update

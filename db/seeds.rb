@@ -6,4 +6,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-SecureContent.create(name: "Password1", content: "Ody553u5" )
+SecureContent.create(name: "Password1", content: "Ody553u5", owner: 1)
+SecureContent.create(name: "R9_Live_Webnode_password", content: "F0urt4", owner: 2)
