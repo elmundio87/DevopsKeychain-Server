@@ -5,7 +5,7 @@ class SecureContentController < ApplicationController
 def get
 
 	user = User.find_by(email: params[:email])
-	content = SecureContent.find_by(name: params[:securecontent])[:content]
+	content = SecureContent.find_by_name_and_owner(params[:securecontent], user[:id])[:content]
 	public_key = user[:pub_key]
 
   keychain_auth = params[:auth]
