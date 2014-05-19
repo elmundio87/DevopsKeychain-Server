@@ -9,7 +9,6 @@ DevopsKeychain::Application.routes.draw do
   # Example of regular route:
      get 'key' => 'privatekeys#new'
      get 'key/create' => 'privatekeys#create'
-     get 'users' => 'users#list'
      get 'admin' => 'users#list'
      get 'users/new' => 'users#new'
      get 'users/create' => 'users#create'
@@ -18,6 +17,7 @@ DevopsKeychain::Application.routes.draw do
      post 'secure' => 'secure_content#get'
 
      post 'users/update' => 'users#update'
+     post 'secure_content/update' => 'secure_content#update'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
