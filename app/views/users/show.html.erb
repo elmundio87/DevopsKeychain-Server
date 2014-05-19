@@ -21,7 +21,8 @@
 
 <%- content_for(:js) do -%>
   <%= javascript_include_tag "hideShowPassword.min" -%>
+<%- end -%>
+
   <script>
     $('input').hideShowPassword(false, true);
   </script>
-<%- end -%>

@@ -20,3 +20,15 @@
 	border-top-right-radius: 0px !important;
 	border-top-left-radius: 0px !important;
 }
+
+.fill-horizontal{
+	width: 100%;
+}
+
+.no-bottom-margin{
+	margin-bottom: 0px !important;
+}
+
+.navbar-text, .navbar-link {
+	color: #BBB !important;
+}
