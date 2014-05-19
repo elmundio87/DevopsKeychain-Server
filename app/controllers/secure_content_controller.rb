@@ -79,7 +79,23 @@ def public_decrypt (key, encrypted_string)
 
 end
 
+def update
 
+
+    puts params
+
+  if params[:commit] == "Update"
+    flash[:notice] = "#{params[:secure_content][:name]} has been successfully updated."
+    SecureContent.where(:name => params[:secure_content][:name]).update_all(:content => params[:secure_content][:content])
+  elsif params[:commit] == "Delete"
+    flash[:notice] = "#{params[:secure_content][:name]} has been successfully deleted."
+    SecureContent.where(:name => params[:secure_content][:name]).delete_all()
+  else
+    flash[:alert] = "Invalid request"
+  end
+
+  redirect_to :back
+end
 
 
 end

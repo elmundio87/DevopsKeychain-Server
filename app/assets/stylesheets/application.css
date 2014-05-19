@@ -31,3 +31,7 @@ p.alert{
 	margin-left:50px;
 	margin-right:50px;
 }
+
+td.float{
+	vertical-align: middle;
+}

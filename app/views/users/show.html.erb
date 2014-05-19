@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-    <table class="table table-striped">
+  <div class="col-xs-12 col-sm-6">
+    <table class="table table-striped table-bordered">
       <tr>
         <th>Name</th>
         <th>Password</th>
@@ -7,15 +8,34 @@
 
     <% @passwords.each do |password| %>
       <tr>
-        <td><%= password.name %></td>
-        <td>
-          <input type="password" value="<%= password.content %>">
-            
-          </input>
+        <td class="float"><%= password.name %></td>
+        <td class="float">
+
+                
+        <%= form_for password, url: secure_content_update_path(), method: :post do |f| %>
+        <%= f.text_field :content, class: "show_hide", type: "password", value: password.content %>
+        <%= f.hidden_field :name %>
+        <%= f.submit "Update", onClick: "setTimeout('location.reload(true);', 2000)", class: "btn btn-primary", style: "margin-left:20px;min-width:100px" %>
+        <%= f.submit "Delete", onClick: "setTimeout('location.reload(true);', 2000)", class: "btn btn-danger", style: "min-width:100px"%>
+        <% end %>    
+       
+
+
         </td>
       </tr>
     <% end %>
     </table>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Password</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+  </div>
 <% end %>
 
 
@@ -24,5 +44,5 @@
 <%- end -%>
 
   <script>
-    $('input').hideShowPassword(false, true);
+    $('input.show_hide').hideShowPassword(false, true);
   </script>

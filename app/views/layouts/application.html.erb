@@ -25,13 +25,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Passwords</a></li>
-        <li><a href="#">Admin</a></li>
+        <li class="active"><a href="/">Passwords</a></li>
+        <li><a href="/admin">Admin</a></li>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
          <% if user_signed_in? %>
-              <li><a>Logged in as <strong><%= current_user.email %></strong></a></li>
+              <li><a><strong><%= current_user.email %></strong></a></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
