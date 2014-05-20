@@ -11,5 +11,5 @@ SecureContent.create(:id => 2, :name => "Password2", :content => "Wibble", :owne
 SecureContent.create(:id => 3, :name => "R9_Live_Webnode_password", :content => "F0urt4", :owner => 2)
 
 puts 'SETTING UP DEFAULT USER LOGIN'
-User.create! :id => 1, :email => 'elmundio1987@gmail.com', :password => 'password', :password_confirmation => 'password'
+User.create! :id => 1, :email => 'elmundio1987@gmail.com', :password => 'password', :password_confirmation => 'password', :admin => true
 User.create! :id => 2, :email => 'lol@lol.com', :password => 'password', :password_confirmation => 'password'
