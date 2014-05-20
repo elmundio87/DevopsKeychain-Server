@@ -26,7 +26,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Passwords</a></li>
+        <% if current_user.try(:admin?) %>
         <li><a href="/admin">Admin</a></li>
+         <% end %>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
