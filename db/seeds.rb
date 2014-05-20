@@ -13,3 +13,7 @@ SecureContent.create(:id => 3, :name => "R9_Live_Webnode_password", :content => 
 puts 'SETTING UP DEFAULT USER LOGIN'
 User.create! :id => 1, :email => 'elmundio1987@gmail.com', :password => 'password', :password_confirmation => 'password', :admin => true
 User.create! :id => 2, :email => 'lol@lol.com', :password => 'password', :password_confirmation => 'password'
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end

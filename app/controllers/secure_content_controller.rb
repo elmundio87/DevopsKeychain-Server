@@ -81,9 +81,6 @@ end
 
 def update
 
-
-    puts params
-
   if params[:commit] == "Update"
     flash[:notice] = "#{params[:secure_content][:name]} has been successfully updated."
     SecureContent.where(:name => params[:secure_content][:name]).update_all(:content => params[:secure_content][:content])
@@ -95,7 +92,18 @@ def update
   end
 
   redirect_to :back
+
 end
+
+def new
+
+    flash[:notice] = "Added the password: #{params[:name]}."
+    SecureContent.create(:name => params[:name], :content => params[:content], :owner => current_user.id)
+
+    redirect_to :back
+
+end
+
 
 
 end

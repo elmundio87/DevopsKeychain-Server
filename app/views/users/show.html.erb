@@ -32,7 +32,13 @@
         <h3 class="panel-title">Add Password</h3>
       </div>
       <div class="panel-body">
-        Panel content
+          <%= form_tag("/secure_content/new", method: "POST") do %>
+              <%= label_tag(:name, "Name:") %>
+              <%= text_field_tag(:name, "", type: "text") %>
+              <%= label_tag(:content, "Password:") %>
+              <%= text_field_tag(:content, "",class: "show_hide", type: "password") %>
+              <%= submit_tag("Create", class: "btn btn-primary", style: "width:100px") %>
+          <% end %>
       </div>
     </div>
   </div>
