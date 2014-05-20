@@ -1,0 +1,4 @@
+ sudo su postgres -c psql
+
+ CREATE USER "dev" with password 'password1';
+ ALTER ROLE dev CREATEDB LOGIN;

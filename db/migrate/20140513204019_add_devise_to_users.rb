@@ -19,7 +19,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      t.string :pub_key
+      t.text :pub_key
 
       ## Confirmable
       # t.string   :confirmation_token

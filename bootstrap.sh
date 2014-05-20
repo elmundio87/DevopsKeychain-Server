@@ -2,7 +2,7 @@
 
 sudo apt-get update
 
-sudo apt-get install libsqlite3-dev nodejs openssl build-essential curl -y
+sudo apt-get install postgresql-9.1 libpq-dev nodejs openssl build-essential curl -y
 sudo apt-get --purge remove ruby-rvm
 sudo rm -rf /usr/share/ruby-rvm /etc/rvmrc /etc/profile.d/rvm.sh
 
