@@ -15,7 +15,7 @@ def show
 
 	
 	if(user_signed_in?)
-	    @passwords = SecureContent.where("owner = ?", current_user[:id])
+	    @passwords = SecureContent.all #where("owner = ?", current_user[:id])
 
 	end
 

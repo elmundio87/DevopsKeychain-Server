@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   create_table "secure_contents", force: true do |t|
     t.string   "name"
     t.string   "content"
-    t.integer  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "environment", null: false
