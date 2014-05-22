@@ -81,12 +81,15 @@ end
 
 def update
 
+   password = SecureContent.where(:id => params[:secure_content][:id])
+   environment = Environment.where(:id => password[0].environment)[0]
+
   if params[:commit] == "Update"
-    flash[:notice] = "#{params[:secure_content][:name]} has been successfully updated."
-    SecureContent.where(:name => params[:secure_content][:name]).update_all(:content => params[:secure_content][:content])
+    flash[:notice] = "#{password[0][:name]} has been successfully updated for the environment #{environment.name}."
+    password.update_all(:content => params[:secure_content][:content])
   elsif params[:commit] == "Delete"
     flash[:notice] = "#{params[:secure_content][:name]} has been successfully deleted."
-    SecureContent.where(:name => params[:secure_content][:name]).delete_all()
+    password.delete_all()
   else
     flash[:alert] = "Invalid request"
   end

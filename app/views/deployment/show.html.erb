@@ -1,14 +1,17 @@
 <% if user_signed_in? %>
    <div class="col-xs-12 col-sm-6">
-    <% @environments.each do |environment| %>
-     <%= environment.name -%>
+    <h1>
+       <%= @deploymentName -%>
+    </h1>
+    <% @environments.order("name asc").each do |environment| %>
+     <h2><%= environment.name -%></h1>
      <table class="table table-striped table-bordered">
       <tr>
         <th>Name</th>
         <th>Password</th>
       </tr>
  
-      <% SecureContent.where(:environment => environment.id).each do |password| %>
+      <% SecureContent.where(:environment => environment.id).order("name asc").each do |password| %>
       <tr>
         <td class="float"><%= password.name %></td>
         <td class="float">
@@ -16,7 +19,7 @@
                 
         <%= form_for password, url: secure_content_update_path(), method: :post do |f| %>
         <%= f.text_field :content, class: "show_hide", type: "password", value: password.content %>
-        <%= f.hidden_field :name %>
+        <%= f.hidden_field :id %>
         <%= f.submit "Update", onClick: "setTimeout('location.reload(true);', 2000)", class: "btn btn-primary", style: "margin-left:20px;min-width:100px" %>
         <%= f.submit "Delete", onClick: "setTimeout('location.reload(true);', 2000)", class: "btn btn-danger", style: "min-width:100px"%>
         <% end %>    
