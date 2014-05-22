@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_filter :authenticate_user!
+
 def new
 	render html: "OK"
 end
@@ -35,18 +35,6 @@ def update
 
 end
 
-def generate_keys()
-		require 'openssl'
-		rsa_key = OpenSSL::PKey::RSA.new(2048)
-
-		cipher =  OpenSSL::Cipher::Cipher.new('des3')
-
-		private_key = rsa_key.to_pem(cipher,'password')
-		public_key = rsa_key.public_key.to_pem
-		key_pair = [public_key,private_key]
-		
-		return key_pair
-end
 
 
 end

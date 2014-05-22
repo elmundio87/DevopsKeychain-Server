@@ -1,14 +1,16 @@
 class SecureContentController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user!
 
 def get
 
-	user = User.find_by(email: params[:email])
-	content = SecureContent.find_by_name_and_owner(params[:securecontent], user[:id])[:content]
-	public_key = user[:pub_key]
+     deployment = Deployment.find_by(name: params[:deployment])
+	environment = Environment.find_by_name_and_deployment(params[:environment], deployment.id)
+	content = SecureContent.find_by_name_and_environment(params[:securecontent], environment.id)[:content]
+	public_key = environment[:public_key]
 
-  keychain_auth = params[:auth]
+     keychain_auth = params[:auth]
 
   if(keychain_auth.blank?)
     render :file => "public/500", :status => :unauthorized
@@ -16,7 +18,7 @@ def get
   end
 
 
-  if( user[:email] == public_decrypt(public_key,keychain_auth))
+  if( params[:securecontent] == public_decrypt(public_key,keychain_auth))
       send_data public_encrypt(public_key,content)
   else
     render :file => "public/401", :status => :unauthorized
