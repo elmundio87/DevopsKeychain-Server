@@ -8,7 +8,14 @@ def show
 end
 
 def new
-	render text: "OK"
+	@users = User.all
+end
+
+def create
+	@deployment = Deployment.new(name: params[:name])
+ 
+  	@deployment.save
+  	redirect_to "/deployments/#{@deployment.id}"
 end
 
 end

@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+
+   <%= form_tag("/deployment/create", method: "POST") do %>
+              <%= label_tag(:name, "Name:") %>
+              <%= text_field_tag(:name, "", type: "text") %>
+            
+	<h1>Permissions</h1>
+
+	 <table class="table table-striped table-bordered">
+		 <tr>
+	        <th>Name</th>
+	        <th>Read/Write</th>
+	      </tr>	
+	 	 <% @users.order("email asc").each do |user| %>
+	  	 	<tr>
+	  	 		<td><%= user.email %></td>
+	  	 		<td><%= check_box_tag(user.email) %></td>
+	  	 	
+	  	 	</tr>
+	  	 <% end %>
+	 </table>
+
+   <%= submit_tag("Create", class: "btn btn-primary", style: "width:100px") %>
+
+<% end %>    
+
+
+
+<% end %>
+
+
+<script>
+setActive("Deployments")
+</script>
