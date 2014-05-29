@@ -2,7 +2,9 @@
 
    <%= form_tag("/deployment/create", method: "POST") do %>
               <%= label_tag(:name, "Name:") %>
-              <%= text_field_tag(:name, "", type: "text") %>
+              <%= text_field_tag(:name, "", type: "text") %><br/>
+               <%= label_tag(:description, "Description (optional):") %>
+              <%= text_field_tag(:description, "", size: '50x10') %>
             
 	<h1>Permissions</h1>
 

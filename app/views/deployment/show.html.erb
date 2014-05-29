@@ -1,8 +1,12 @@
 <% if user_signed_in? %>
    <div class="col-xs-12 col-sm-6">
     <h1>
-       <%= @deploymentName -%>
+       <%= @deployment.name -%>
     </h1>
+    <div>
+       <%= @deployment.description -%>
+    </div>
+
     <% @environments.order("name asc").each do |environment| %>
      <h2><%= environment.name -%></h1>
      <table class="table table-striped table-bordered">
