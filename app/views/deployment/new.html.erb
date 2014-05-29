@@ -16,7 +16,7 @@
 	 	 <% @users.order("email asc").each do |user| %>
 	  	 	<tr>
 	  	 		<td><%= user.email %></td>
-	  	 		<td><%= check_box_tag(user.email) %></td>
+	  	 		<td><%= check_box_tag("permission_#{user.email}") %></td>
 	  	 	
 	  	 	</tr>
 	  	 <% end %>

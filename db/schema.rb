@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140521154357) do
     t.datetime "updated_at"
   end
 
+  create_table "permissions", force: true do |t|
+    t.string   "user"
+    t.text     "deployment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "environments", force: true do |t|
     t.string   "name"
     t.text     "public_key"
