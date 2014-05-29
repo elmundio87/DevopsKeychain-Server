@@ -22,6 +22,10 @@ Environment.create :id => 3, :name => "Staging", :deployment => 2
 Deployment.create :id => 1, :name => "R9 Web"
 Deployment.create :id => 2, :name => "Tradesimple Webnode"
 
+Permission.create :id => 1, :user => 1, :deployment => 1
+Permission.create :id => 2, :user => 2, :deployment => 2
+
 ActiveRecord::Base.connection.tables.each do |t|
 ActiveRecord::Base.connection.reset_pk_sequence!(t)
+
 end
