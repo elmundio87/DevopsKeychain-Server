@@ -38,7 +38,7 @@
 
         <%= form_for environment, url: environment_update_path(), method: :post do |f| %>
         <%= f.hidden_field :id %>
-        <%= f.hidden_field "deployment", value: @deploymentName %>
+        <%= f.hidden_field "deployment", value: @deployment.name %>
         <%= f.submit "Generate new private key" %>
         <% end %>
 
