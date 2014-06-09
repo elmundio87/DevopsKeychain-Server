@@ -26,3 +26,5 @@ sudo -u postgres psql -c "ALTER USER dev PASSWORD 'password1';"
 
 cp /vagrant/nginx/default /etc/nginx/sites-available/default
 service nginx restart
+
+mkdir /etc/keychain
