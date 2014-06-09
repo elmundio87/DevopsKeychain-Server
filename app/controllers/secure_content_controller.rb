@@ -7,7 +7,7 @@ def get
 
      deployment = Deployment.find_by(name: params[:deployment])
 	environment = Environment.find_by_name_and_deployment(params[:environment], deployment.id)
-	content = SecureContent.find_by_name_and_environment(params[:securecontent], environment.id)[:content]
+	content = SecureContent.find_by_name_and_environment(params[:securecontent], environment.id)[:encrypted_content]
 	public_key = environment[:public_key]
 
      keychain_auth = params[:auth]
@@ -19,7 +19,7 @@ def get
 
 
   if( params[:securecontent] == public_decrypt(public_key,keychain_auth))
-      send_data public_encrypt(public_key,content)
+      send_data public_encrypt(public_key,SymmetricEncryption.decrypt(content))
   else
     render :file => "public/401", :status => :unauthorized
   end
