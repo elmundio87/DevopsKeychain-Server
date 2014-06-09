@@ -88,7 +88,7 @@ def update
 
   if params[:commit] == "Update"
     flash[:notice] = "#{password[0][:name]} has been successfully updated for the environment #{environment.name}."
-    password.update_all(:content => params[:secure_content][:content])
+    password.update_all(:encrypted_content => SymmetricEncryption.encrypt(params[:secure_content][:content]))
   elsif params[:commit] == "Delete"
     flash[:notice] = "#{params[:secure_content][:name]} has been successfully deleted."
     password.delete_all()

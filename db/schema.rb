@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140521154357) do
 
   create_table "secure_contents", force: true do |t|
     t.string   "name"
-    t.string   "content"
+    t.string   "encrypted_content"
     t.integer  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
