@@ -32,6 +32,9 @@ def create
 		@permission.save
 	end
 
+	@permission = Permission.new(user_id: current_user.id, deployment_id: @deployment.id)
+	@permission.save
+
   	redirect_to "/deployments/#{@deployment.id}"
 
 end
