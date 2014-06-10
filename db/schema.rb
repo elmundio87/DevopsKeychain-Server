@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   end
 
   create_table "permissions", force: true do |t|
-    t.integer   "user"
-    t.integer   "deployment"
+    t.integer   "user_id"
+    t.integer   "deployment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

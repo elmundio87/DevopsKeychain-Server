@@ -7,7 +7,7 @@ def show
 
 	 @environments = Environment.where("Deployment = ?", params[:id])
 
-	 @permission = Permission.find_by_user_and_deployment(current_user.id, @deployment.id )
+	 @permission = Permission.find_by_user_id_and_deployment_id(current_user.id, @deployment.id )
 
 	 if(@permission == nil)
 	 	flash[:alert] = "You do not have permission to access that resource"
@@ -28,7 +28,7 @@ def create
 
 	params.keys.find_all{|item| item.start_with? "permission_" }.each do |email|
 		@user = User.find_by(email: email.sub(/^permission_*/,"") )
-		@permission = Permission.new(user: @user.id, deployment: @deployment.id)
+		@permission = Permission.new(user_id: @user.id, deployment_id: @deployment.id)
 		@permission.save
 	end
 

@@ -30,7 +30,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Deployments <b class="caret"></b></a>
           <ul class="dropdown-menu">
               <% if user_signed_in? %>
-             <% Deployment.all.each do |deployment| %>
+             <% current_user.deployments.each do |deployment| %>
             <li><a href="/deployments/<%= deployment.id %>"><%= deployment.name %></a></li>
              <% end %>           
             <li class="divider"></li>
