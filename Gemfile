@@ -52,3 +52,4 @@ end
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'seed_dumper'
 gem 'symmetric-encryption'
+gem 'factory_girl'

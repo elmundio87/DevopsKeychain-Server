@@ -38,4 +38,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
+  #FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
+  FactoryGirl.find_definitions
+
 end
