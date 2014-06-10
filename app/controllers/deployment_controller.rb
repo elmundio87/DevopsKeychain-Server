@@ -24,7 +24,14 @@ end
 def create
 	@deployment = Deployment.new(name: params[:name], description: params[:description])
 
-  	@deployment.save
+
+	begin
+	  	@deployment.save
+	rescue ActiveRecord::RecordNotUnique => e
+		flash[:alert] = "A Deployment called '#{params[:name]}' already exists."
+		redirect_to :back
+		return
+	end
 
 	params.keys.find_all{|item| item.start_with? "permission_" }.each do |email|
 		@user = User.find_by(email: email.sub(/^permission_*/,"") )
