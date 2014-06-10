@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20140521154357) do
     t.text     "public_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deployment", null: false
+    t.integer  "deployment_id", null: false
   end
 
-  add_index "environments", ["name","deployment"], unique: true
+  add_index "environments", ["name","deployment_id"], unique: true
 
   create_table "secure_contents", force: true do |t|
     t.string   "name", null: false

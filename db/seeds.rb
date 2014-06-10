@@ -16,9 +16,9 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 User.create! :id => 1, :email => 'elmundio1987@gmail.com', :password => 'password', :password_confirmation => 'password', :admin => true
 User.create! :id => 2, :email => 'lol@lol.com', :password => 'password', :password_confirmation => 'password'
 
-Environment.create :id => 1, :name => "QA", :deployment => 1
-Environment.create :id => 2, :name => "Staging", :deployment => 1
-Environment.create :id => 3, :name => "Staging", :deployment => 2
+Environment.create :id => 1, :name => "QA", :deployment_id => 1
+Environment.create :id => 2, :name => "Staging", :deployment_id => 1
+Environment.create :id => 3, :name => "Staging", :deployment_id => 2
 Deployment.create :id => 1, :name => "R9 Web"
 Deployment.create :id => 2, :name => "Tradesimple Webnode"
 

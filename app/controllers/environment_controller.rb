@@ -6,7 +6,7 @@ def update
 	key_pair = generate_keys()
 
 	environment = Environment.find_by(id: params[:environment][:id])
-	deployment = params[:environment][:deployment]
+	deployment = params[:environment][:deployment_id]
 	environment.update(public_key: Base64.encode64(key_pair[0]))
 
 	filename = "#{deployment}-#{environment.name}.pem"

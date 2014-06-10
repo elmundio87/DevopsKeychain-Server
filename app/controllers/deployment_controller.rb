@@ -1,12 +1,9 @@
 class DeploymentController < ApplicationController
 
 def show
-	 Deployment.where("id = ?", params[:id]).each do |deployment|
-	 	@deployment = deployment
-	 end
-
-	 @environments = Environment.where("Deployment = ?", params[:id])
-
+	
+	 @deployment = Deployment.find_by_id(params[:id])
+	 @environments = @deployment.environments
 	 @permission = Permission.find_by_user_id_and_deployment_id(current_user.id, @deployment.id )
 
 	 if(@permission == nil)
