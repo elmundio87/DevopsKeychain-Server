@@ -12,6 +12,6 @@ describe Environment, :type => :model do
 	end
 
 	it "is invalid without a deployment" do
-		expect(FactoryGirl.build(:environment, deployment: nil)).to_not be_valid
+		expect(FactoryGirl.build(:environment, deployment_id: nil)).to_not be_valid
 	end
 end
