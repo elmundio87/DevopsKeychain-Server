@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140521154357) do
     t.datetime "updated_at"
   end
 
+  add_index "deployments", ["name"], unique: true
+
   create_table "permissions", force: true do |t|
     t.integer   "user_id"
     t.integer   "deployment_id"
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140521154357) do
     t.integer  "deployment", null: false
   end
 
+  add_index "environments", ["name","deployment"], unique: true
+
   create_table "secure_contents", force: true do |t|
     t.string   "name"
     t.string   "encrypted_content"
@@ -46,6 +50,8 @@ ActiveRecord::Schema.define(version: 20140521154357) do
     t.datetime "updated_at"
     t.integer  "environment", null: false
   end
+
+   add_index "secure_contents", ["name","environment"], unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
