@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   enable_extension "plpgsql"
 
   create_table "deployments", force: true do |t|
-    t.string   "name"
+    t.string   "name", null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   end
 
   create_table "environments", force: true do |t|
-    t.string   "name"
+    t.string   "name", null: false
     t.text     "public_key"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   add_index "environments", ["name","deployment"], unique: true
 
   create_table "secure_contents", force: true do |t|
-    t.string   "name"
+    t.string   "name", null: false
     t.string   "encrypted_content"
     t.integer  "owner"
     t.datetime "created_at"
