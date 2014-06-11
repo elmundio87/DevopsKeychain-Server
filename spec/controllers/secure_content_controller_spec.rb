@@ -2,7 +2,12 @@ require 'spec_helper'
 
 describe SecureContentController, :type => :controller do
 
-test_auth_header = "ItTnVYOezoLcjT1HBdmQCARuyWXbTDpkV+/v5tDL4253lL3U7VNzYLfYRyCd\nSko7yXawow/lHL+Io+dAc/ZtQpokFUm/+1OVT2CfYyJ+/78oLOmiyEG9XQJZ\nni6tLnXqyJ/Dw/QkNC7mZ8WwyZFIyRVl1RYPlozSLHW3dEuziYujdhdwh5z0\nlAT6KJtKhCjVOCnekrjoEuxoUmsJRGT75mA0zHUMjpbPFp2ph2MWmNuMxxFp\nHaPo7RJPcLSnArSHuSbfVvMR7U8CBMGAXWJZzSRpeI/JPK5FIRQHOAOTBkIS\nT/Ye+i6Tnlxm2Acq3NVCLZFP4pczts80Gc3FGSgd0Q=="
+	before(:each) do
+		sign_in User.all[0]
+	end
+
+
+	test_auth_header = "ItTnVYOezoLcjT1HBdmQCARuyWXbTDpkV+/v5tDL4253lL3U7VNzYLfYRyCd\nSko7yXawow/lHL+Io+dAc/ZtQpokFUm/+1OVT2CfYyJ+/78oLOmiyEG9XQJZ\nni6tLnXqyJ/Dw/QkNC7mZ8WwyZFIyRVl1RYPlozSLHW3dEuziYujdhdwh5z0\nlAT6KJtKhCjVOCnekrjoEuxoUmsJRGT75mA0zHUMjpbPFp2ph2MWmNuMxxFp\nHaPo7RJPcLSnArSHuSbfVvMR7U8CBMGAXWJZzSRpeI/JPK5FIRQHOAOTBkIS\nT/Ye+i6Tnlxm2Acq3NVCLZFP4pczts80Gc3FGSgd0Q=="
 	
 	describe "get password" do
 		it "has a 400 status code if no parameters are passed in" do
@@ -38,6 +43,16 @@ test_auth_header = "ItTnVYOezoLcjT1HBdmQCARuyWXbTDpkV+/v5tDL4253lL3U7VNzYLfYRyCd
 
 			expect(response.code).to match "200"
 		end
+	end
+
+	describe "new password" do
+		it "redirects to previous page upon completion" do
+			request.env["HTTP_REFERER"] = "http://test.host"
+			get :new
+			expect(response.code).to match "302"
+			expect(response).to redirect_to :back
+		end
+
 	end
 
 end

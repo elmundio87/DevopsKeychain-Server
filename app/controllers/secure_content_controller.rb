@@ -39,7 +39,8 @@ class SecureContentController < ApplicationController
     flash[:notice] = "#{params[:secure_content][:name]} has been successfully deleted."
     password.destroy()
   else
-    flash[:alert] = "Invalid request"
+     render :file => "public/400", :status => 400
+     return
   end
 
   redirect_to :back
