@@ -11,4 +11,8 @@ describe Deployment, :type => :model do
 		expect(FactoryGirl.build(:deployment, name: nil)).to_not be_valid
 	end
 
+	it "returns its list of environments" do
+		expect(Deployment.all[0].environments.length).to_not be_equal(0)
+	end
+
 end
