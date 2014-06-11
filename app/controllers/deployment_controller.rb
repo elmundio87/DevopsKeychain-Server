@@ -19,8 +19,14 @@ def new
 end
 
 def create
-	@deployment = Deployment.new(name: params[:name], description: params[:description])
+	
+	if(params[:name].strip() === "")
+		flash[:alert] = "A deployment name cannot be blank"
+		redirect_to :back
+		return
+	end
 
+	@deployment = Deployment.new(name: params[:name], description: params[:description])
 
 	begin
 	  	@deployment.save
