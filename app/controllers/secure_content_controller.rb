@@ -26,61 +26,6 @@ def get
 
 end
 
-def public_encrypt(key, plaintext_string)
-
-	require 'openssl'
-	require 'base64'
-
-	public_key_file = Base64.decode64(key)
-
-	public_key = OpenSSL::PKey::RSA.new(public_key_file)
-	encrypted_string = Base64.encode64(public_key.public_encrypt(plaintext_string))
-
-	return encrypted_string
-
-end
-
-def private_encrypt(key, plaintext_string)
-
-    require 'openssl'
-    require 'base64'
-
-    private_key_file = Base64.decode64(key)
-
-    password = "password"
-    private_key = OpenSSL::PKey::RSA.new(public_key_file,password)
-    encrypted_string = Base64.encode64(private_key.private_encrypt(plaintext_string))
-
-    return encrypted_string
-
-  end
-
-
-def private_decrypt (key, encrypted_string)
-
-	require 'openssl'
-	require 'base64'
-
-	password = 'password'
-	private_key = OpenSSL::PKey::RSA.new(key,password)
-
-	return private_key.private_decrypt(Base64.decode64(encrypted_string))
-
-end
-
-def public_decrypt (key, encrypted_string)
-
-  require 'openssl'
-  require 'base64'
-
-  public_key_file = Base64.decode64(key)
-  public_key = OpenSSL::PKey::RSA.new(public_key_file)
-  encrypted_string = Base64.decode64(encrypted_string)
-
-  return public_key.public_decrypt(encrypted_string)
-
-end
-
 def update
 
    password = SecureContent.where(:id => params[:secure_content][:id])
