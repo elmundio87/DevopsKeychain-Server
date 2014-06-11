@@ -17,7 +17,7 @@ describe DeploymentController, :type => :controller do
 			expect(response).to redirect_to "/"
 		end
 
-		it "redirects to root if you don't have permission to view it" do
+		it "shows 403 error if you don't have permission to view it" do
 			get :show, id: 2
 			expect(response.code).to match "403"
 		end
