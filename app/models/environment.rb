@@ -4,6 +4,6 @@ class Environment < ActiveRecord::Base
   validates :deployment_id, presence: true , allow_blank: false
 
   belongs_to :deployment
-  has_many :secure_content
+  has_many :secure_content, dependent: :destroy
 
 end
