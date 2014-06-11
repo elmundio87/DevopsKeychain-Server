@@ -46,4 +46,12 @@ RSpec.configure do |config|
   #FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
   FactoryGirl.find_definitions
 
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    load "#{Rails.root}/db/test_seeds.rb"
+  end
+
+  config.include Devise::TestHelpers, type: :controller
+
+
 end
