@@ -3,6 +3,13 @@ class DeploymentController < ApplicationController
 def show
 	
 	 @deployment = Deployment.find_by_id(params[:id])
+
+	 if(@deployment.nil?)
+	 	flash[:alert] = "That deployment does not exist"
+		redirect_to "/"
+		return
+	 end
+
 	 @environments = @deployment.environments
 	 @permission = Permission.find_by_user_id_and_deployment_id(current_user.id, @deployment.id )
 
