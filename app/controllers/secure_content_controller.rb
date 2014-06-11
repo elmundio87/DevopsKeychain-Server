@@ -26,8 +26,6 @@ class SecureContentController < ApplicationController
       render :file => "public/401", :status => :unauthorized
     end
 
-  rescue
-        render :file => "public/500", :status => 500
   end
 
   def update
@@ -82,7 +80,8 @@ end
     encrypted_string = Base64.decode64(encrypted_string)
 
     return public_key.public_decrypt(encrypted_string)
-
+  rescue
+    return nil
   end
 
 end

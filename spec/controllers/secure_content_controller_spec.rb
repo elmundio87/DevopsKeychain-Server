@@ -19,16 +19,6 @@ test_auth_header = "ItTnVYOezoLcjT1HBdmQCARuyWXbTDpkV+/v5tDL4253lL3U7VNzYLfYRyCd
 			expect(response.code).to match "400"
 		end
 
-		it "has a 500 status code if the auth header is nonsense" do
-			post :show, 
-			:deployment => "R9 Web", 
-			:environment => "QA", 
-			:securecontent => "Domain Password",
-			:auth => "wibble"
-
-			expect(response.code).to match "500"
-		end
-
 		it "has a 401 status code if the auth header is incorrect" do
 			post :show, 
 			:deployment => "R9 Web", 
