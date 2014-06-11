@@ -1,31 +1,35 @@
 class EnvironmentController < ApplicationController
 
-def update
-	require 'base64'
+	def update
 
-	key_pair = generate_keys()
+		require 'base64'
 
-	environment = Environment.find_by(id: params[:environment][:id])
-	environment.update(public_key: Base64.encode64(key_pair[0]))
+		key_pair = generate_keys()
 
-	filename = "#{environment.deployment.name}-#{environment.name}.pem"
+		environment = Environment.find_by(id: params[:environment][:id])
+		environment.update(public_key: Base64.encode64(key_pair[0]))
 
-	send_data key_pair[1], :filename => filename
-end
+		filename = "#{environment.deployment.name}-#{environment.name}.pem"
+
+		send_data key_pair[1], :filename => filename
+
+	end
 
 
-def generate_keys()
-	require 'openssl'
-	rsa_key = OpenSSL::PKey::RSA.new(2048)
+	def generate_keys()
 
-	cipher =  OpenSSL::Cipher::Cipher.new('des3')
+		require 'openssl'
+		rsa_key = OpenSSL::PKey::RSA.new(2048)
 
-	private_key = rsa_key.to_pem(cipher,'password')
-	public_key = rsa_key.public_key.to_pem
-	key_pair = [public_key,private_key]
-	
-	return key_pair
-end
+		cipher =  OpenSSL::Cipher::Cipher.new('des3')
+
+		private_key = rsa_key.to_pem(cipher,'password')
+		public_key = rsa_key.public_key.to_pem
+		key_pair = [public_key,private_key]
+
+		return key_pair
+		
+	end
 
 
 end
