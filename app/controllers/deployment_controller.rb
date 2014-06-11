@@ -13,8 +13,7 @@ def show
 	 @permission = Permission.find_by_user_id_and_deployment_id(current_user.id, @deployment.id )
 
 	 if(@permission.nil?)
-	 	flash[:alert] = "You do not have permission to access that resource"
-	 	redirect_to "/"
+		render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
 	 end
 	 
 
