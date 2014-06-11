@@ -7,7 +7,7 @@
        <%= @deployment.description -%>
     </div>
 
-    <% @environments.order("name asc").each do |environment| %>
+    <% @deployment.environments.order("name asc").each do |environment| %>
      <h2><%= environment.name -%></h1>
      <table class="table table-striped table-bordered">
       <tr>

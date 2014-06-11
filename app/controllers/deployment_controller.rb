@@ -10,10 +10,9 @@ def show
 		return
 	 end
 
-	 @environments = @deployment.environments
 	 @permission = Permission.find_by_user_id_and_deployment_id(current_user.id, @deployment.id )
 
-	 if(@permission == nil)
+	 if(@permission.nil?)
 	 	flash[:alert] = "You do not have permission to access that resource"
 	 	redirect_to "/"
 	 end
@@ -45,12 +44,10 @@ def create
 
 	params.keys.find_all{|item| item.start_with? "permission_" }.each do |email|
 		@user = User.find_by(email: email.sub(/^permission_*/,"") )
-		@permission = Permission.new(user_id: @user.id, deployment_id: @deployment.id)
-		@permission.save
+		Permission.create(:user_id => @user.id, :deployment_id => @deployment.id)
 	end
 
-	@permission = Permission.new(user_id: current_user.id, deployment_id: @deployment.id)
-	@permission.save
+	Permission.create(:user_id => current_user.id, :deployment_id => @deployment.id)
 
   	redirect_to "/deployments/#{@deployment.id}"
 

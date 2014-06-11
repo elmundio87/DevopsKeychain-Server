@@ -28,15 +28,14 @@ end
 
 def update
 
-   password = SecureContent.where(:id => params[:secure_content][:id])
-   environment = Environment.where(:id => password[0].environment)[0]
+   password = SecureContent.find_by_id(:id => params[:secure_content][:id])
 
   if params[:commit] == "Update"
-    flash[:notice] = "#{password[0][:name]} has been successfully updated for the environment #{environment.name}."
+    flash[:notice] = "#{password[0][:name]} has been successfully updated for the environment #{password.environment.name}."
     password.update_all(:encrypted_content => SymmetricEncryption.encrypt(params[:secure_content][:content]))
   elsif params[:commit] == "Delete"
     flash[:notice] = "#{params[:secure_content][:name]} has been successfully deleted."
-    password.delete_all()
+    password.destroy()
   else
     flash[:alert] = "Invalid request"
   end
