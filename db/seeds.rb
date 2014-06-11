@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-SecureContent.create(:id => 1, :name => "Domain Password", :content => "Ody553u5",  :environment => 1)
-SecureContent.create(:id => 2, :name => "Local Admin", :content => "Wibble",  :environment => 1)
-SecureContent.create(:id => 3, :name => "Domain Password", :content => "F0urt4", :environment => 2)
-SecureContent.create(:id => 4, :name => "Hyper-V Password", :content => "F0urt4", :environment => 3)
+SecureContent.create(:id => 1, :name => "Domain Password", :content => "Ody553u5",  :environment_id => 1)
+SecureContent.create(:id => 2, :name => "Local Admin", :content => "Wibble",  :environment_id => 1)
+SecureContent.create(:id => 3, :name => "Domain Password", :content => "F0urt4", :environment_id => 2)
+SecureContent.create(:id => 4, :name => "Hyper-V Password", :content => "F0urt4", :environment_id => 3)
 
 
 puts 'SETTING UP DEFAULT USER LOGIN'

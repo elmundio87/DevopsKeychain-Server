@@ -4,4 +4,6 @@ class SecureContent < ActiveRecord::Base
 
   validates :encrypted_content, :symmetric_encryption => true
 
+  belongs_to :environment
+
 end

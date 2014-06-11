@@ -15,7 +15,7 @@
         <th>Password</th>
       </tr>
  
-      <% SecureContent.where(:environment => environment.id).order("name asc").each do |password| %>
+      <% SecureContent.where(:environment_id => environment.id).order("name asc").each do |password| %>
       <tr>
         <td class="float"><%= password.name %></td>
         <td class="float">

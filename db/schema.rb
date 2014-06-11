@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20140521154357) do
     t.integer  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "environment", null: false
+    t.integer  "environment_id", null: false
   end
 
-   add_index "secure_contents", ["name","environment"], unique: true
+   add_index "secure_contents", ["name","environment_id"], unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

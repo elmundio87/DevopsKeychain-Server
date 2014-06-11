@@ -7,7 +7,7 @@ def get
 
   deployment = Deployment.find_by(name: params[:deployment])
 	environment = Environment.find_by_name_and_deployment_id(params[:environment], deployment.id)
-	content = SecureContent.find_by_name_and_environment(params[:securecontent], environment.id)[:encrypted_content]
+	content = SecureContent.find_by_name_and_environment_id(params[:securecontent], environment.id)[:encrypted_content]
 	public_key = environment[:public_key]
 
   keychain_auth = params[:auth]
