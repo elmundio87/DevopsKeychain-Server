@@ -31,4 +31,19 @@ require 'spec_helper'
       click_button 'Sign in'
       expect(page).to_not have_content 'Admin'
     end
+
+    it "can log in as non-admin using Warden::Test::Helpers" do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+    visit '/'
+    expect(page).to_not have_content 'Admin'
+    end
+
+    it "can log in as admin using Warden::Test::Helpers" do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user)
+    visit '/'
+    expect(page).to have_content 'Admin'
+    end
+  
   end
