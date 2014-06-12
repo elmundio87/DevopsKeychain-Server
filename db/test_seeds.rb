@@ -16,8 +16,8 @@ SecureContent.create(:id => 4, :name => "Password1", :content => "F0urt4", :envi
 
 
 puts 'SETTING UP DEFAULT USER LOGIN'
-User.create! :id => 1, :email => 'user1@keychain.com', :password => 'password', :password_confirmation => 'password', :admin => true
-User.create! :id => 2, :email => 'user2@keychain.com', :password => 'password', :password_confirmation => 'password'
+User.create! :id => 1, :username => 'user1', :email => 'user1@keychain.com', :password => 'password', :password_confirmation => 'password', :admin => true
+User.create! :id => 2, :username => 'user2', :email => 'user2@keychain.com', :password => 'password', :password_confirmation => 'password'
 
 Environment.create :id => 1, :name => "QA", :deployment_id => 1, :public_key => test_public_key
 Environment.create :id => 2, :name => "Staging", :deployment_id => 1, :public_key => test_public_key

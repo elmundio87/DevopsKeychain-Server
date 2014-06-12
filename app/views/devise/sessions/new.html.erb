@@ -8,7 +8,7 @@
 
 			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 			<div class="input-group input-group-lg fill-horizontal">
-				<%= f.email_field :email, autofocus: true, placeholder: "Username", class: "form-control"  %>
+				<%= f.text_field :username, autofocus: true, placeholder: "Username", class: "form-control"  %>
 			</div>
 
 			<div class="input-group input-group-lg fill-horizontal">

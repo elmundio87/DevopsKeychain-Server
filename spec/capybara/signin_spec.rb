@@ -5,7 +5,7 @@ require 'spec_helper'
     it "signs me in" do
       visit '/users/sign_in'
       within("#new_user") do
-        fill_in 'user_email', :with => 'user1@keychain.com'
+        fill_in 'user_username', :with => 'user1'
         fill_in 'user_password', :with => 'password'
       end
       click_button 'Sign in'
@@ -15,7 +15,7 @@ require 'spec_helper'
     it "shows the admin button for an admin user" do
       visit '/users/sign_in'
       within("#new_user") do
-        fill_in 'user_email', :with => 'user1@keychain.com'
+        fill_in 'user_username', :with => 'user1'
         fill_in 'user_password', :with => 'password'
       end
       click_button 'Sign in'
@@ -25,7 +25,7 @@ require 'spec_helper'
     it "doesn't show the admin button for a normal user" do
       visit '/users/sign_in'
       within("#new_user") do
-        fill_in 'user_email', :with => 'user2@keychain.com'
+        fill_in 'user_username', :with => 'user2'
         fill_in 'user_password', :with => 'password'
       end
       click_button 'Sign in'
