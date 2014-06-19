@@ -3,6 +3,7 @@ rvm:
 - 1.9.3
 - 2.0.0
 before_install:
+- chmod +x bootstrap.sh
 - ./bootstrap.sh
 script:
 - bundle install
