@@ -15,7 +15,7 @@ DevopsKeychain::Application.routes.draw do
      get 'users' => 'users#show'
      get 'deployments/new' => 'deployment#new'
      get 'deployments/:id' => 'deployment#show'
-     post 'secure' => 'secure_content#get'
+     post 'secure' => 'secure_content#show'
 
      post 'environment/update' => 'environment#update'
      post 'secure_content/update' => 'secure_content#update'

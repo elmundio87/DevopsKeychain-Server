@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   enable_extension "plpgsql"
 
   create_table "deployments", force: true do |t|
-    t.string   "name"
+    t.string   "name", null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "deployments", ["name"], unique: true
 
   create_table "permissions", force: true do |t|
     t.integer   "user_id"
@@ -31,21 +33,25 @@ ActiveRecord::Schema.define(version: 20140521154357) do
   end
 
   create_table "environments", force: true do |t|
-    t.string   "name"
+    t.string   "name", null: false
     t.text     "public_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deployment", null: false
+    t.integer  "deployment_id", null: false
   end
 
+  add_index "environments", ["name","deployment_id"], unique: true
+
   create_table "secure_contents", force: true do |t|
-    t.string   "name"
+    t.string   "name", null: false
     t.string   "encrypted_content"
     t.integer  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "environment", null: false
+    t.integer  "environment_id", null: false
   end
+
+   add_index "secure_contents", ["name","environment_id"], unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -38,4 +39,22 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
+  #FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
+  FactoryGirl.find_definitions
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    load "#{Rails.root}/db/test_seeds.rb"
+  end
+
+  config.include Devise::TestHelpers, type: :controller
+
+  config.include Warden::Test::Helpers
+  Warden.test_mode!
+
 end

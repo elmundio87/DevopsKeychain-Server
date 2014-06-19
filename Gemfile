@@ -50,5 +50,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass', '~> 3.1.1'
-gem 'seed_dumper'
 gem 'symmetric-encryption'
+gem 'factory_girl'
+gem 'database_cleaner', '~> 1.3.0'
+gem 'capybara'

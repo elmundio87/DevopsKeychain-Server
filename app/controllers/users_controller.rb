@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
 
-def new
-	render html: "OK"
-end
+	def new
+		render html: "OK"
+	end
 
-def list
-	 @users = User.all
-end
+	def list
+		@users = User.all
+	end
 
-def create
-end
+	def create
+	end
 
-def show
+	def show
 
-	
-	if(user_signed_in?)
+		
+		if(user_signed_in?)
 	    @passwords = SecureContent.all #where("owner = ?", current_user[:id])
 
 	end
