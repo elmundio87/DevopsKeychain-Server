@@ -1,4 +1,4 @@
-{<img src="https://travis-ci.org/elmundio87/DevopsKeychain-Server.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/elmundio87/DevopsKeychain-Server]
+Travis CI Status: {<img src="https://travis-ci.org/elmundio87/DevopsKeychain-Server.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/elmundio87/DevopsKeychain-Server]
 
 == README
 
