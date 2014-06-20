@@ -2,6 +2,10 @@
 
 sudo apt-get update
 
+export LANGUAGE="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 sudo apt-get install postgresql-9.1 libpq-dev nodejs openssl build-essential curl nginx -y
 sudo apt-get --purge remove ruby-rvm
 sudo rm -rf /usr/share/ruby-rvm /etc/rvmrc /etc/profile.d/rvm.sh
