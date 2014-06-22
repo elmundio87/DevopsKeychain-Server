@@ -32,6 +32,12 @@ class EnvironmentController < ApplicationController
 	end
 
 	def create
+
+		if(!has_permission?(current_user.id,params[:deployment_id]))
+			forbidden
+			return
+		end
+
 		if(params[:name].strip() === "")
 			flash[:alert] = "An environment name cannot be blank"
 			redirect_to :back

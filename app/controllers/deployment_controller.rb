@@ -4,16 +4,15 @@ class DeploymentController < ApplicationController
 
 		@deployment = Deployment.find_by_id(params[:id])
 
+		if(!has_permission?(current_user.id, @deployment.id))
+			forbidden
+			return
+		end
+
 		if(@deployment.nil?)
 			flash[:alert] = "That deployment does not exist"
 			redirect_to "/"
 			return
-		end
-
-		@permission = Permission.find_by_user_id_and_deployment_id(current_user.id, @deployment.id )
-
-		if(@permission.nil?)
-			render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
 		end
 
 	end
