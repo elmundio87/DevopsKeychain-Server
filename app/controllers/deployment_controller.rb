@@ -4,14 +4,14 @@ class DeploymentController < ApplicationController
 
 		@deployment = Deployment.find_by_id(params[:id])
 
-		if(!has_permission?(current_user.id, @deployment.id))
-			forbidden
-			return
-		end
-
 		if(@deployment.nil?)
 			flash[:alert] = "That deployment does not exist"
 			redirect_to "/"
+			return
+		end
+
+		if(!has_permission?(current_user.id, @deployment.id))
+			forbidden
 			return
 		end
 
