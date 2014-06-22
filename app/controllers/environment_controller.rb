@@ -31,5 +31,23 @@ class EnvironmentController < ApplicationController
 		
 	end
 
+	def create
+		if(params[:name].strip() === "")
+			flash[:alert] = "An environment name cannot be blank"
+			redirect_to :back
+			return
+		end
+
+		@environment = Environment.new(name: params[:name], deployment_id: params[:deployment_id])
+
+		begin
+			@environment.save
+		rescue ActiveRecord::RecordNotUnique => e
+			flash[:alert] = "An environment called '#{params[:name]}' already exists."
+		end
+
+		redirect_to :back
+	end
+
 
 end

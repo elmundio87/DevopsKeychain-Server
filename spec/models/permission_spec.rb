@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Permission do
-  pending "add some examples to (or delete) #{__FILE__}"
+ 
+	it "has a valid factory" do
+		expect(FactoryGirl.build(:permission)).to be_valid
+	end
+
+
 end
