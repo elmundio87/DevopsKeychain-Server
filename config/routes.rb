@@ -19,7 +19,7 @@ DevopsKeychain::Application.routes.draw do
 
      post 'environment/update' => 'environment#update'
      post 'secure_content/update' => 'secure_content#update'
-     post 'secure_content/new'  => 'secure_content#new'
+     post 'secure_content/create'  => 'secure_content#create'
      post 'deployment/create'  => 'deployment#create'
      post 'environment/create' => 'environment#create'
 

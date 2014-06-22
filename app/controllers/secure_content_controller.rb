@@ -47,10 +47,10 @@ class SecureContentController < ApplicationController
 
 end
 
-def new
+def create
 
-  flash[:notice] = "Added the password: #{params[:name]}."
-  SecureContent.create(:name => params[:name], :content => params[:content], :owner => current_user.id)
+  flash[:notice] = "Added the password: #{params[:environment][:name]}."
+  SecureContent.create(:name => params[:environment][:name], :content => params[:environment][:content], :environment_id => params[:environment][:environment_id])
 
   redirect_to :back
 

@@ -33,6 +33,16 @@
         </td>
       </tr>
       <% end %>
+      <tr>
+        <td>
+        <%= form_for environment, url: secure_content_create_path(), method: :post do |f| %>
+        <%= f.text_field :name, value: "" %>
+        <%= f.text_field :content, value: "", type: "password" %>
+        <%= f.hidden_field :environment_id, value: environment.id %>
+        <%= f.submit "Create" %>
+        <% end %>
+        </td>
+      </tr>
    
     </table>
 
