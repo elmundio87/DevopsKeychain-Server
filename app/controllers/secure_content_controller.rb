@@ -32,20 +32,25 @@ class SecureContentController < ApplicationController
 
    password = SecureContent.find_by(:id => params[:secure_content][:id])
 
-   if params[:commit] == "Update"
-    flash[:notice] = "#{password[0][:name]} has been successfully updated for the environment #{password.environment.name}."
-    password.update_all(:encrypted_content => SymmetricEncryption.encrypt(params[:secure_content][:content]))
-  elsif params[:commit] == "Delete"
-    flash[:notice] = "#{params[:secure_content][:name]} has been successfully deleted."
-    password.destroy()
-  else
-     render :file => "public/400", :status => 400
-     return
-  end
+    flash[:notice] = "#{password.name} has been successfully updated for the environment #{password.environment.name}."
+    password.update(:encrypted_content => SymmetricEncryption.encrypt(params[:secure_content][:content]))
+  
+
+    redirect_to :back
+
+end
+
+def delete
+
+   password = SecureContent.find_by(:id => params[:secure_content][:id])
+
+  flash[:notice] = "#{password.name} has been successfully deleted."
+  password.destroy()
 
   redirect_to :back
 
 end
+
 
 def create
 

@@ -13,6 +13,7 @@
       <tr>
         <th>Name</th>
         <th>Password</th>
+        <th></th>
       </tr>
  
       <% SecureContent.where(:environment_id => environment.id).order("name asc").each do |password| %>
@@ -24,9 +25,14 @@
         <%= form_for password, url: secure_content_update_path(), method: :post do |f| %>
         <%= f.text_field :content, class: "show_hide", type: "password", value: password.content %>
         <%= f.hidden_field :id %>
-        <%= f.submit "Update", onClick: "setTimeout('location.reload(true);', 2000)", class: "btn btn-primary", style: "margin-left:20px;min-width:100px" %>
-        <%= f.submit "Delete", onClick: "setTimeout('location.reload(true);', 2000)", class: "btn btn-danger", style: "min-width:100px"%>
+        <%= f.submit "Update", class: "btn btn-primary", style: "margin-left:20px;min-width:100px" %>
         <% end %>    
+        </td>
+        <td>
+         <%= form_for password, url: secure_content_delete_path(), method: :post do |f| %>  
+         <%= f.hidden_field :id %>
+         <%= f.submit "X", class: "btn btn-danger", style: "min-width:100px"%>
+         <% end %>    
        
 
 
