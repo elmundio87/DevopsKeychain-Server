@@ -30,7 +30,7 @@ class SecureContentController < ApplicationController
 
   def update
 
-   password = SecureContent.find_by_id(:id => params[:secure_content][:id])
+   password = SecureContent.find_by(:id => params[:secure_content][:id])
 
    if params[:commit] == "Update"
     flash[:notice] = "#{password[0][:name]} has been successfully updated for the environment #{password.environment.name}."
