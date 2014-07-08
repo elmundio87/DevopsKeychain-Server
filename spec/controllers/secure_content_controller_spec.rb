@@ -55,7 +55,12 @@ EOH
 	describe "new password" do
 		it "redirects to previous page upon completion" do
 			request.env["HTTP_REFERER"] = "http://test.host"
-			get :new
+			post :create, environment: {
+			name: "Deployment1",
+			environment_id: 1 , 
+			content: "Password99"
+			}
+
 			expect(response.code).to match "302"
 			expect(response).to redirect_to :back
 		end
