@@ -6,7 +6,7 @@ export LANGUAGE="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-sudo apt-get install postgresql-9.3 libpq-dev nodejs openssl build-essential curl nginx -y
+sudo apt-get install make postgresql-9.[0-9]$ libpq-dev nodejs openssl build-essential curl nginx -y
 sudo apt-get --purge remove ruby-rvm
 sudo rm -rf /usr/share/ruby-rvm /etc/rvmrc /etc/profile.d/rvm.sh
 
@@ -28,7 +28,7 @@ createuser --superuser -U postgres -h localhost dev
 
 sudo -u postgres psql -c "ALTER USER dev PASSWORD 'password1';"
 
-cp /vagrant/nginx/default /etc/nginx/sites-available/default
+cp nginx/default /etc/nginx/sites-available/default
 service nginx restart
 
 mkdir /etc/keychain
